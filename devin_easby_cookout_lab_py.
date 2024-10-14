@@ -1,0 +1,42 @@
+# Devin Easby
+# CIS 129 Module 6 Lab 
+# This code is used to calculate the number of hot dogs and buns needed for a cookout
+
+def get_total_hot_dogs():
+    # Get number of attendees and number of hot dogs per attendee 
+    attendees = int(input('Enter the number of attendees:'))
+    hot_dogs = int(input('Enter the number of hot dogs per attendee:'))
+    
+    # Calculation for total number of hot dogs 
+    total = hot_dogs * attendees 
+    return total
+
+def show_results(total):
+    # Constants for hot dogs and buns per package
+    DOGS = 10
+    BUNS = 8
+
+    # Calculation for left over hot dogs and buns 
+    dogs_left = (DOGS - total % DOGS) % DOGS
+    min_dogs = (total / DOGS) + (1 if dogs_left > 0 else 0)
+
+    # Total hot dogs provided 
+    total_hot_dogs_provided = min_dogs * DOGS
+    buns_needed = total
+
+    # Calculation for left over buns 
+    buns_left = (BUNS - buns_needed % BUNS) % BUNS
+    min_buns = (buns_needed / BUNS) + (1 if buns_left > 0 else 0)
+
+    # Display results
+    print(f'Minimum package of hot dogs needed: {min_dogs}')
+    print(f'Minimum package of hot dog buns needed: {min_buns}')
+    print(f'Hot dogs remaining: {dogs_left}')
+    print(f'Hot dog buns remaining: {buns_left}')
+
+def main(): 
+    # Initialize variables
+        total_hot_dogs = get_total_hot_dogs()
+        show_results(total_hot_dogs)
+if __name__ == '__main__':
+    main()
